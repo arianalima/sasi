@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+   <HEAD>
+      <TITLE>
+         Frame 1
+      </TITLE>
+   </HEAD>
+<BODY>
+   <H1> Frame 1</H1>
+
+    <form id="form1" >
+  		Text1: <input id="text1" type="text" name="text1"><br><br>
+  		<button type="button" onclick="capturar()">Submit</button>
+	</form> 
+ 
+   <script language="JavaScript" type="text/javascript">
+   		var frame1 = window.parent.document.getElementById("frame1");
+   		var conteudoIframe1 = frame1.contentDocument || frame1.contentWindow.document;
+		
+		var frame2 = window.parent.document.getElementById("frame2");  // especifica o frame de id="meuIframe" dentro do documento principal
+		var conteudoIframe2 = frame2.contentDocument || frame2.contentWindow.document;
+
+   	function capturar(){
+	    var captura = document.getElementById("text1").value; // captura o valor do campo de id="nome", dentro do elemento de id="formularioX", dentro do documento que é pai deste iframe.
+        conteudoIframe2.getElementById("text2").value = captura;
+   	}
+
+   	function capturar2(){
+	    var captura = conteudoIframe2.getElementById("text2").value;
+	    conteudoIframe1.getElementById("text1").value = captura;
+   	}
+	
+
+	</script>
+
+</BODY>
+</HTML>
